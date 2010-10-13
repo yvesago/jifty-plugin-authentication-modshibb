@@ -38,10 +38,12 @@ sub take_action {
     my ($plugin)  = Jifty->find_plugin('Jifty::Plugin::Authentication::ModShibb');
 
     my $username;
-     
-    #warn Dumper $plugin->shibb_mandatory;
+
+    my %env = %ENV;
+    #eval { %env = Jifty->web->request->env() };
+
     foreach my $val (@{$plugin->shibb_mandatory} ) {
-        if (!$ENV{$val}) {
+        if (!$env{$val}) {
             # missing mandatory shibb attribute
             Jifty->web->_redirect('/shibb_missing_attribute');
             return 0;
@@ -57,8 +59,8 @@ sub take_action {
         };
     };
 
-    my $email = $ENV{$plugin->shibb_mapping->{email}};
-    my $shibb_id = $ENV{$plugin->shibb_mapping->{shibb_id}};
+    my $email = $env{$plugin->shibb_mapping->{email}};
+    my $shibb_id = $env{$plugin->shibb_mapping->{shibb_id}};
 
     # Load up the user
     my $current_user = Jifty->app_class('CurrentUser');
@@ -92,7 +94,7 @@ sub take_action {
 
     foreach my $col_name (keys %{$plugin->shibb_mapping}) {
         next if $col_name eq 'shibb_id';
-        my $new_val = $ENV{$plugin->shibb_mapping->{$col_name}} || '';
+        my $new_val = $env{$plugin->shibb_mapping->{$col_name}} || '';
         $u->_set( column => $col_name, value => $new_val )
             if $new_val && $u->$col_name ne $new_val;
     };
