@@ -4,7 +4,7 @@ use warnings;
 package Jifty::Plugin::Authentication::ModShibb;
 use base qw/Jifty::Plugin/;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 NAME
 
@@ -53,6 +53,8 @@ apache
     ShibRequestSetting requireSession 1
     require valid-user
    </Location>
+
+For debugging idp and sp config you can add an apache authentication on C</shibb_test> location.
 
 =head1 METHODS
 

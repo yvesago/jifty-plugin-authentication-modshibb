@@ -47,6 +47,9 @@ CONFIG
         require valid-user
        </Location>
 
+    For debugging idp and sp config you can add an apache authentication on
+    "/shibb_test" location.
+
 METHODS
   prereq_plugins
     This plugin depends on the User plugin.
