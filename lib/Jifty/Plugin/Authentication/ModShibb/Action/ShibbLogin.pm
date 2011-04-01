@@ -73,7 +73,8 @@ sub take_action {
             class           => 'CreateUser',
             current_user    => $current_user->superuser,
             arguments       => {
-                shibb_id => $shibb_id
+                shibb_id => $shibb_id,
+                email => ($email)? $email : $shibb_id
             }
         );
         $action->run;

@@ -4,7 +4,7 @@ use warnings;
 package Jifty::Plugin::Authentication::ModShibb;
 use base qw/Jifty::Plugin/;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 NAME
 
@@ -106,7 +106,7 @@ Yves Agostini, <yvesago@cpan.org>
 
 =head1 LICENSE
 
-Copyright 2010, Yves Agostini <yvesago@cpan.org>. 
+Copyright 2011, Yves Agostini <yvesago@cpan.org>. 
 
 This program is free software and may be modified and distributed under the same terms as Perl itself.
 
