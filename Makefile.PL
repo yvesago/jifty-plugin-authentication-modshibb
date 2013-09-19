@@ -5,7 +5,7 @@ all_from('lib/Jifty/Plugin/Authentication/ModShibb.pm');
 
 requires('Jifty' => '0.91117');
 
-resources repository => 'git@github.com:yvesago/jifty-plugin-authentication-modshibb.git';
+repository 'git://github.com/yvesago/jifty-plugin-authentication-modshibb.git';
 
 install_share;
 
